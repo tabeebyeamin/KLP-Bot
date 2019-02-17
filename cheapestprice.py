@@ -1,4 +1,4 @@
-from urllib.request import urlopen as uReq
+from urllib2 import urlopen as uReq
 from bs4 import BeautifulSoup as soup
 
 # this is a function that takes a Canadacomputers url and finds the cheapest
@@ -20,39 +20,39 @@ def cheapest_price(my_url):
 
     # do the html parsing
     page_soup = soup(page_html, "html.parser")
-    # find all the items information 
-    containers = page_soup.findAll('div', {'class': 'productarea'})
+    # find all the items information
+    containers = page_soup.findAll('div', {'class': 'search-item regular-ad'})
+    
+    #print(type(containers))
+    print(len(containers))
 
     # create an empty dictionary of monitors to pricers
     product_to_prices = {}
     # cycle through the containers
     for container in containers:
         # find the name of the model of the monitor
-        product = container.p.text
-        # extract the 3 possible prices and store them as lists
-        price_1 = container.findAll('p',
-                                    {"class":"price-ourprice price-final"})
-        price_2 = container.findAll('p',
-                                    {"class":"price-ir price-final redtxt"})
-        price_3 = container.findAll('p',
-                                    {"class":"price-final redtxt"})
-        # add them together (if the price does not exist it won't add anything)
-        # this will be a one element soup object
-        text_price = price_1 + price_2 + price_3
+        product = container.a.text
+        print(product)
+        
+        # extract the price and
+        price = container.findAll('div',
+                                    {"class":"price"})[0].text
         # extract the text from the first element of the soup list object
-        price = text_price[0].text
+        price = price_1[0].text
+        #print(price)
         # strip out the $ and ,
-        price = float(price.strip('$').replace(',',''))
+        price = float(price.replace('$', '').replace(',','').replace(' ', ''))
         # map the product to the price
+        product = product.strip()
         product_to_prices[product] = price
-    # find the cheapest price out of the recorded prices
-    cheapest_price = min(product_to_prices.values())
-    # now check the cheapest product
-    for product in product_to_prices.keys():
-        # strip the dollar sign from the price
-        price = product_to_prices[product]
-        # check if the value of the products is less than the previous lowest
-        if (price == cheapest_price):
-            # change the cheapest product to this one
-            cheapest_product = product
+        # find the cheapest price out of the recorded prices
+        cheapest_price = min(product_to_prices.values())
+        # now check the cheapest product
+        for product in product_to_prices.keys():
+            # strip the dollar sign from the price
+            price = product_to_prices[product]
+            # check if the value of the products is less than the previous lowest
+            if (price == cheapest_price):
+                # change the cheapest product to this one
+                cheapest_product = product
     return (cheapest_product, cheapest_price)
