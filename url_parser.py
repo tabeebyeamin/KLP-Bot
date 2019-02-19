@@ -1,4 +1,6 @@
 from cheapestprice import cheapest_price as cheapest
+from sql import add_to_table as db
+
 def url_parser():
     '''
     Asks the user for a province/city, product
@@ -49,3 +51,8 @@ def url_parser():
         " is the \n" + product_name + "\n") +  (
         "costing $" + str(product_price) + ", posted " + date + (
             "\n" + "Here's the link: \n" + link)))
+    save = input("Would you like to save this info to a database? Y/N\n")
+    if (save.lower().startswith("y")):
+        table_name = input("name of database you would like to store to?\n")
+        db(product_name, product_price, provinces[province_num], link, date, table_name)
+    
