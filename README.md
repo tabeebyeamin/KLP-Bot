@@ -1,7 +1,7 @@
 # Kijiji Lowest Price Bot
 This is a script through looks through a kijiji web page and finds the
 lowest price item with the keyword that you give it.
-Uses Python and BS4
+Uses Python and BS4 and SQLite3 for database entry.
 This is how it works right now. Adding more features soon.
 
 ---------------------------------------------------------------------
