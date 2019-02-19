@@ -41,7 +41,11 @@ def url_parser():
                  11: "k0l1700103",
                  12: "k0l1700105"}
     provinceid = provinceids[province_num]
-    
     website = "https://www.kijiji.ca/b-" + (
-        provincehtml + "/" + producthtml + "/" + provinceid)
-    return cheapest(website)
+        provincehtml + "/" + producthtml +  "/" + provinceid)
+    (product_name, product_price, link, date) = cheapest(website, product)
+    
+    print("The cheapest " + product + " in " + provinces[province_num] + (
+        " is the \n" + product_name + "\n") +  (
+        "costing $" + str(product_price) + ", posted " + date + (
+            "\n" + "Here's the link: \n" + link)))
