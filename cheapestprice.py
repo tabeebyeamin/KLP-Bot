@@ -1,11 +1,10 @@
 from urllib2 import urlopen as uReq
 from bs4 import BeautifulSoup as soup
-from time import time
 
 # this is a function that takes a Canadacomputers url and finds the cheapest
 # price on that url
 def cheapest_price(my_url, givenproduct):
-    '''(url) -> (string, float)
+    '''(url, string) -> (string, float, string, string)
     This function takes a page url that has a list of products
     and finds the cheapest product on that page.
     REQ: The url must be a page url or else the program is unlikely
@@ -29,7 +28,6 @@ def cheapest_price(my_url, givenproduct):
     
     #print(type(containers))
     # print(len(containers))
-    t0 = time()
     # create an empty dictionary of monitors to pricers
     product_to_prices = {}
     product_to_urls = {}
