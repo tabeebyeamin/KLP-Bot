@@ -1,5 +1,6 @@
-# LowestPriceScript
-Looks through a web page for the cheapest item on that page
+# Kijiji Lowest Price Bot
+This is a script through looks through a kijiji web page and finds the
+lowest price item with the keyword that you give it.
 Uses Python and BS4
 This is how it works right now. Adding more features soon.
 
