@@ -4,4 +4,4 @@ Uses Python and BS4
 This is how it works right now. Adding more features soon.
 
 ---------------------------------------------------------------------
-![alt text](https://i.imgur.com/NdjoadZ.png)
+![alt text](https://i.imgur.com/pU1ukGf.png)
