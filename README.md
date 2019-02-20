@@ -21,9 +21,9 @@ You can save the info you get into a database of your choice:
 
 ## Todo
 
-1. Slack/Discord Bot Functionality
-2. GUI for Slack/Discord Bot
-3. Make a Logo
-4. Monitoring Using Proxies
-5. Messenger Bot?
-6. Multiple Page Search (Without being stupid slow)
+- Discord Bot Functionality
+- GUI for Slack/Discord Bot
+- Make a Logo
+- Monitoring Using Proxies
+- Messenger Bot?
+- Multiple Page Search (Without being stupid slow)
