@@ -14,6 +14,10 @@ You can save the info you get into a database of your choice:
 ![alt text](https://i.imgur.com/vXuh0ez.png)
 
 -------------------------------------------------------------------------
+# Use it with Slack!
+![alt_text](https://i.imgur.com/15SUADu.png)
+![alt_text](https://i.imgur.com/KqdVUda.png)
+![alt_text](https://i.imgur.com/4SZ0p40.png)
 
 ## Todo
 
