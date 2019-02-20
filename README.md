@@ -20,6 +20,7 @@ You can save the info you get into a database of your choice:
 ![alt_text](https://i.imgur.com/4SZ0p40.png)
 
 ## Todo
+- Documentation
 - Error Handling
 - Discord Bot Functionality
 - GUI for Slack/Discord Bot
