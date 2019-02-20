@@ -20,6 +20,11 @@ You can save the info you get into a database of your choice:
 ![alt_text](https://i.imgur.com/4SZ0p40.png)
 
 ## Todo
+- change save to database command as:
+
+1. **save** *productname* **in** *locationnum* **to** *databasename*
+2. **save** *productname* **in** *locationnum* (not providing *to* will save to default.db)
+
 - Documentation
 - Error Handling
 - Discord Bot Functionality
