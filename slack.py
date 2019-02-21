@@ -71,14 +71,14 @@ def handle_command(command, channel):
         response = "Choose a locaton number from" + provinces_string
 
     # help
-    elif command == "help":
+    elif (command == "help"):
         # print out all the usable commands
         response = "Here are list of commands to get you started." + (
-        "\n\n*{}* <product name> *{}* <location number>".format(
+        "\n\n*{}* _product name_ *{}* _location number_".format(
             "peek", "in"))  + (
         "\nEXAMPLE: To get the lowest gtx 1070 in Ontario") + (
         "\n peek gtx 1070 in 0") + (
-        "\n\n*{}* <product name> *{}* <location number> *{}* <database name>".format(
+        "\n\n*{}* _product name_ *{}* _location number_ *{}* _database name_".format(
             "peek", "in", "saveas")) + (
         "\n EXAMPLE: Find cheapest scarlett 2i2 in BC put it in 'mytable.db'") + (
         "\n peek scarlett 2i2 in 2 saveas mytable") + (
@@ -110,9 +110,8 @@ def handle_command(command, channel):
             (product_name, product_price, link, date) = cheapest(website, product)
             
             response = "The cheapest " + product + " in " + provinces[province_num] + (
-            " is the \n" + product_name + "\n") +  (
-            "costing $" + str(product_price) + ", posted " + date + (
-                "\n" + "Here's the link: \n" + link))
+            " is the \n" + "<{}|{}>".format(link, product_name) + "\n") +  (
+            "costing $" + str(product_price) + ", posted " + date)
            
         # check if the after_in is of the form <number> ... saveas <text>
         elif (" saveas " in after_in):
@@ -121,7 +120,6 @@ def handle_command(command, channel):
             saveas_right_index = after_in.find(" saveas ") + len(" saveas ")
             
             before_saveas = after_in[:saveas_left_index]
-            print(before_saveas)
             # check if valid location is used
             if (after_in[:saveas_left_index].strip().isdigit()):
                 
@@ -135,10 +133,10 @@ def handle_command(command, channel):
                    provinces[province_num], link, date, table_name)
                 response = "Added cheapest " + product + " in " + (
                     provinces[province_num]) + (
-                " \n" + product_name + "\n") +  (
+                " \n" + "<{}|{}>".format(link, product_name) + "\n") +  (
                 "costing $" + str(product_price) + ", posted " + date + (
-                "\n" + "with the link: \n" + link + "\nto the database named " + (
-                table_name + "!")))
+                "\nto the database named " + (
+                    "*{}*".format(table_name) + "!")))
 
     # Sends the response back to the channel
     slack_client.api_call(
