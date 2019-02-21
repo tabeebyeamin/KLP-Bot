@@ -5,6 +5,14 @@ Uses Python and BS4 and SQLite3 for database entry.
 This is how it works right now. Adding more features soon.
 
 -------------------------------------------------------------------------
+## Use it as a Script
+![alt_text](https://i.imgur.com/BufaLcg.png)
+
+## Save Your Findings to a Database!
+![alt_text](https://i.imgur.com/a5B5WTg.png)
+![alt_text](https://i.imgur.com/jJ2Lb9T.png)
+
+-------------------------------------------------------------------------
 # Use it with Slack!
 ## Help
 ![alt_text](https://i.imgur.com/Yrm9J3l.png)
