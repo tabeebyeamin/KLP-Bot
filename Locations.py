@@ -1,5 +1,12 @@
 class Locations:
+    '''
+    This class stores information about Locations available in Kijiji Canada
+    '''
     def __init__(self):
+        '''
+        Default constructor
+        '''
+        # mapping of province numbers to province names
         self._provinces = {0: "Ontario",
                  1: "Quebec",
                  2: "British Columbia",
@@ -13,6 +20,8 @@ class Locations:
                  10: "Yukon Terrorities",
                  11: "Northwest Territories",
                  12: "Nunavut"}
+        
+        # mapping of province numbers to province ids
         self._province_ids = {0: "k0l9004",
                  1: "k0l9001",
                  2: "k0l9007",
@@ -26,8 +35,15 @@ class Locations:
                  10: "k0l1700104",
                  11: "k0l1700103",
                  12: "k0l1700105"}
+
     def get_provinces(self):
+        '''
+        Get mapping of province numbers to province names  
+        '''
         return self._provinces
     
     def get_province_ids(self):
+        '''
+        Get mapping of province numbers to province ids 
+        '''
         return self._province_ids
