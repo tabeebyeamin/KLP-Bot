@@ -2,7 +2,7 @@
 This is a script through looks through a kijiji web page and finds the
 lowest price item with the keyword that you give it.
 Uses Python and BS4 and SQLite3 for database entry.
-This is how it works right now. Adding more features soon.
+This program works really well with products with easily identifiable model names or numbers, like computer hardware and peripherals, but it will also work on a plethora of other products as shown below. This is how it works right now. I'm always looking to add more features and functionality.
 
 -------------------------------------------------------------------------
 ## Use it as a Script
@@ -34,11 +34,12 @@ This is how it works right now. Adding more features soon.
 1. **save** *productname* **in** *locationnum* **to** *databasename*
 2. **save** *productname* **in** *locationnum* (not providing *to* will save to default.db)
 
-- Documentation
+- Minimum Price to filter false results
+- Return multiple i.e "n cheapest items" to mitigate inaccuracy
 - Error Handling
 - Discord Bot Functionality
 - GUI for Slack/Discord Bot
 - Make a Logo
 - Monitoring Using Proxies
 - Messenger Bot?
-- Multiple Page Search (Without being stupid slow)
+- Make it able to send Kijiji user a message on their posting
