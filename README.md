@@ -4,20 +4,20 @@ lowest price item with the keyword that you give it.
 Uses Python and BS4 and SQLite3 for database entry.
 This is how it works right now. Adding more features soon.
 
----------------------------------------------------------------------
-![alt text](https://i.imgur.com/pU1ukGf.png)
-
-You can save the info you get into a database of your choice:
-
-----------------------------------------------------------------------
-![alt text](https://i.imgur.com/5TGRAaZ.png)
-![alt text](https://i.imgur.com/vXuh0ez.png)
-
 -------------------------------------------------------------------------
 # Use it with Slack!
-![alt_text](https://i.imgur.com/15SUADu.png)
-![alt_text](https://i.imgur.com/KqdVUda.png)
-![alt_text](https://i.imgur.com/4SZ0p40.png)
+## Help
+![alt_text](https://i.imgur.com/Yrm9J3l.png)
+
+## Locations
+![alt_text](https://i.imgur.com/Iy0pQhT.png)
+
+## Peek
+![alt_text](https://i.imgur.com/Ju1uKkr.png)
+
+## Peek and Save
+![alt_text](https://i.imgur.com/L7SPHba.png)
+
 
 ## Todo
 - change save to database command as:
