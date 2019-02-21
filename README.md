@@ -22,6 +22,7 @@ This is how it works right now. Adding more features soon.
 
 ## Peek
 ![alt_text](https://i.imgur.com/Ju1uKkr.png)
+![alt_text](https://i.imgur.com/6yAFqCk.png)
 
 ## Peek and Save
 ![alt_text](https://i.imgur.com/L7SPHba.png)
