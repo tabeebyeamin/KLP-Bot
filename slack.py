@@ -9,18 +9,6 @@ from sql import add_to_table as db
 
 slack_client = SlackClient('KEY')
 
-# send message to #general channel
-message = "hello"
-
-#slack.chat.post_message('#general', message);
-
-# message start to get it to start
-
-# it will give you the option of whether you want to monitor or peek
-
-#slack.chat.post_message("#general", text="hello", username="Kijiji Lowest Price Bot")
-
-#slack.chat.me_message("#general", "yodog")
 # starterbot's user ID in Slack: value is assigned after the bot starts up
 starterbot_id = None
 

@@ -5,13 +5,11 @@ from bs4 import BeautifulSoup as soup
 # price on that url
 def cheapest_price(my_url, givenproduct):
     '''(url, string) -> (string, float, string, string)
-    This function takes a page url that has a list of products
+    This function takes a kijiji page url that has a list of products
     and finds the cheapest product on that page.
-    REQ: The url must be a page url or else the program is unlikely
+    REQ: The url must be a kijiji page url or else the program is unlikely
     to work.
-    >>> cheapest_price('http://www.canadacomputers.com/index.php?cPath=21')
-    'Cheapest product is $6.49, the Elephant WEM-1015 (PLUS) Rigid Mic
-    Laser Mouse + Cable Clips, Black'
+    >>> cheapest_price("")
     '''
     # open up the connection, grab the page
 
