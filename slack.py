@@ -14,23 +14,17 @@ starterbot_id = None
 
 # constants
 RTM_READ_DELAY = 1 # 1 second delay between reading from RTM
-EXAMPLE_COMMAND = "start"
 MENTION_REGEX = "^<@(|[WU].+?)>(.*)"
 
 def parse_bot_commands(slack_events):
     """
-        Parses a list of events coming from the Slack RTM API to find bot commands.
-        If a bot command is found, this function returns a tuple of command and channel.
-        If its not found, then this function returns None, None.
+        Parses a list of events coming from the Slack RTM API to find
+        bot commands. If a bot command is found, this function returns a tuple
+        of command and channel. If its not found, then this function
+        returns None, None.
     """
     for event in slack_events:
         if event["type"] == "message" and not "subtype" in event:
-            
-            
-            
-            #print(event)
-            
-            
             user_id, message = parse_direct_mention(event["text"])
             if user_id == starterbot_id:
                 return message, event["channel"]
@@ -38,16 +32,24 @@ def parse_bot_commands(slack_events):
 
 def parse_direct_mention(message_text):
     """
-        Finds a direct mention (a mention that is at the beginning) in message text
-        and returns the user ID which was mentioned. If there is no direct mention, returns None
+        Finds a direct mention (a mention that is at the beginning) in message
+        text and returns the user ID which was mentioned. If there is no
+        direct mention, returns None
     """
     matches = re.search(MENTION_REGEX, message_text)
-    # the first group contains the username, the second group contains the remaining message
-    return (matches.group(1), matches.group(2).strip()) if matches else (None, None)
+    # the first group contains the username, the second group contains
+    # the remaining message
+    return (matches.group(1),
+            matches.group(2).strip()) if matches else (None, None)
 
 def handle_command(command, channel):
     """
         Executes bot command if the command is known
+        These are the available commands:
+        peek <product> in <location> 
+        peek <product> in <location> saveas <db>
+        locations
+        help
     """
     # Default response is help text for the user
     default_response = "Uknown command. Try *{}* for list of commands and usage.".format("help")
@@ -55,32 +57,33 @@ def handle_command(command, channel):
     # Finds and executes the given command, filling in response
     response = None
     
-    
-    '''
-    peek <product> in <location> 
-    peek <product> in <location> saveas <db>
-    locations
-    '''
+    # get the location, locations and locaiton ids
     l = Locations()
     provinces = l.get_provinces()
     province_ids = l.get_province_ids()    
     
-    # This is where you start to implement more commands!
-    if command == "locations":
+    # locations
+    if (command == "locations"):
+        # print a message of the available locations
         provinces_string = "\n"
         for province_no in provinces:
             provinces_string += str(province_no) + ": " + provinces[province_no] + "\n"
         response = "Choose a locaton number from" + provinces_string
+
+    # help
     elif command == "help":
+        # print out all the usable commands
         response = "Here are list of commands to get you started." + (
-            "\n\n*{}* <product name> *{}* <location number>".format("peek", "in"))  + (
-            "\nEXAMPLE: To get the lowest gtx 1070 in Ontario") + (
-            "\n peek gtx 1070 in 0") + (
-            "\n\n*{}* <product name> *{}* <location number> *{}* <database name>".format("peek", "in", "saveas")) + (
-            "\n EXAMPLE: Find cheapest scarlett 2i2 in BC put it in 'mytable.db'") + (
-            "\n peek scarlett 2i2 in 2 saveas mytable") + (
-            "\n\n*{}*".format("locations")) + (
-            "\n Lists all the location numbers")
+        "\n\n*{}* <product name> *{}* <location number>".format(
+            "peek", "in"))  + (
+        "\nEXAMPLE: To get the lowest gtx 1070 in Ontario") + (
+        "\n peek gtx 1070 in 0") + (
+        "\n\n*{}* <product name> *{}* <location number> *{}* <database name>".format(
+            "peek", "in", "saveas")) + (
+        "\n EXAMPLE: Find cheapest scarlett 2i2 in BC put it in 'mytable.db'") + (
+        "\n peek scarlett 2i2 in 2 saveas mytable") + (
+        "\n\n*{}*".format("locations")) + (
+        "\n Lists all the location numbers")
     
     # peek <product name> in <location number>"
     # startswith peek
@@ -128,8 +131,10 @@ def handle_command(command, channel):
                 (product_name, product_price, link, date) = cheapest(website, product)                
                 
                 table_name = after_in[saveas_right_index:]
-                db(product_name, product_price, provinces[province_num], link, date, table_name)
-                response = "Added cheapest " + product + " in " + provinces[province_num] + (
+                db(product_name, product_price,
+                   provinces[province_num], link, date, table_name)
+                response = "Added cheapest " + product + " in " + (
+                    provinces[province_num]) + (
                 " \n" + product_name + "\n") +  (
                 "costing $" + str(product_price) + ", posted " + date + (
                 "\n" + "with the link: \n" + link + "\nto the database named " + (

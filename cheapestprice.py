@@ -9,7 +9,7 @@ def cheapest_price(my_url, givenproduct):
     and finds the cheapest product on that page.
     REQ: The url must be a kijiji page url or else the program is unlikely
     to work.
-    >>> cheapest_price("")
+    >>> cheapest_price("https://www.kijiji.ca/b-ontario/gtx-1070/k0l9004")
     '''
     # open up the connection, grab the page
 
@@ -23,21 +23,18 @@ def cheapest_price(my_url, givenproduct):
     
     containers = page_soup.findAll('div', {'class': 'search-item regular-ad'})
 
-    
-    #print(type(containers))
-    # print(len(containers))
-    # create an empty dictionary of monitors to pricers
+    # create empty dicts of prices, urls and dates attributres
     product_to_prices = {}
     product_to_urls = {}
     product_to_dates = {}
+    
     # cycle through the containers
     for container in containers:
-        # find the name of the model of the monitor
+        # find the name of the model of the product
         product = container.a.text.strip()
         if givenproduct.lower() in product.lower():
-            # print(product)
             
-            # extract the possible prices and store them as a list
+            # extract the price and store it
             # this used to be findAll
             price = container.find('div',
                                         {"class":"price"}).text
@@ -48,29 +45,25 @@ def cheapest_price(my_url, givenproduct):
             
             # see if the price is valid
             try:
-                #print(price)
                 # strip out the $ and ,            
-                price = float(price.replace('$',
-                                            '').replace(',','').replace(' ', ''))
+                price = float(
+                    price.replace('$', '').replace(',', '').replace(' ', ''))
                 # change from unicode to string
                 date = str(date)
                 product = str(product)
                 
-                # map product's price
-                # map product's url
-                # map prod
-                
+                # map product's price, url and date
                 product_to_prices[product] = price
                 product_to_urls[product] = url
                 product_to_dates[product] = date
-                # find the cheapest price out of the recorded prices
             # otherwise skip it
             except:
                 pass
+    # find the cheapest price out of the recorded prices
     cheapest_price = min(product_to_prices.values())
     # now check the cheapest product
     for product in product_to_prices:
-        # strip the dollar sign from the price
+        # extract the price from price dict
         price = product_to_prices[product]
         # check if the value of the products is < the previous lowest
         if (price == cheapest_price):
@@ -78,5 +71,6 @@ def cheapest_price(my_url, givenproduct):
             cheapest_product = product
             cheapest_url = product_to_urls[product]
             cheapest_date = product_to_dates[product]
-                
+
+    # return name, price, url and date
     return (cheapest_product, cheapest_price, cheapest_url, cheapest_date)
