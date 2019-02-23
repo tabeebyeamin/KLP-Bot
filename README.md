@@ -2,7 +2,7 @@
 This is a script through looks through a kijiji web page and finds the
 lowest price item with the keyword that you give it.
 Uses Python and BS4 and SQLite3 for database entry.
-This program works really well with products with easily identifiable model names or numbers, like computer hardware and peripherals, but it will also work on a plethora of other products as shown below. This is how it works right now. I'm always looking to add more features and functionality.
+This program works really well with products with easily identifiable model names or numbers, like computer hardware and peripherals, but it will also work on a plethora of other products as shown below. This is how it works right now. I'm always looking to add more features and functionality. If you have any issues or suggestions, please let me know.
 
 -------------------------------------------------------------------------
 ## Use it as a Script
