@@ -1,4 +1,9 @@
 # Kijiji Lowest Price Bot
+## If you have any suggestions, please let me know!
+Submit Issues or let me know however you can. I want to make this project something that people actually want to use so I appreciate all the feedback possible. 
+
+-------------------------------------------------------------------------------
+
 This is a script through looks through a kijiji web page and finds the
 lowest price item with the keyword that you give it.
 Uses Python and BS4 and SQLite3 for database entry.
