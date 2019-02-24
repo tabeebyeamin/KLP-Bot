@@ -1,6 +1,6 @@
 # Kijiji Lowest Price Bot
 ## If you have any suggestions, please let me know!
-Submit Issues or let me know however you can. I want to make this project something that people actually want to use so I appreciate all the feedback possible. 
+Submit Issues or let me know however you can. I want to make this project something that people actually want to use so I appreciate all the feedback possible. Tell me what should I add to make it something you would want to use?
 
 -------------------------------------------------------------------------------
 
