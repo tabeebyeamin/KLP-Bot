@@ -38,7 +38,7 @@ This program works really well with products with easily identifiable model name
 
 1. **save** *productname* **in** *locationnum* **to** *databasename*
 2. **save** *productname* **in** *locationnum* (not providing *to* will save to default.db)
-
+- Fix issues with Quebec
 - Minimum Price to filter false results
 - Return multiple i.e "n cheapest items" to mitigate inaccuracy
 - Error Handling
