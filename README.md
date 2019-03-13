@@ -47,3 +47,4 @@ This program works really well with products with easily identifiable model name
 - Monitoring Using Proxies
 - Messenger Bot?
 - Make it able to send Kijiji user a message on their posting
+- Turn into web application so users don't have to download
