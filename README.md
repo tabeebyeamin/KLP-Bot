@@ -42,8 +42,6 @@ This program works really well with products with easily identifiable model name
 - Return multiple i.e "n cheapest items" to mitigate inaccuracy
 - Error Handling
 - Turn into web application so users don't have to download
-- Discord Bot Functionality
-- GUI for Slack/Discord Bot
 - Make a Logo
 - Monitoring Using Proxies
 - Messenger Bot?
