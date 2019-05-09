@@ -1,6 +1,6 @@
 from urllib2 import urlopen as uReq
 from bs4 import BeautifulSoup as soup
-
+from Product import Product
 """
 Take the kijiji website url and find the cheapest priced item on that page.
 """
@@ -73,5 +73,13 @@ def cheapest_price(my_url, givenproduct):
             cheapest_url = product_to_urls[product]
             cheapest_date = product_to_dates[product]
 
-    # return name, price, url and date
-    return (cheapest_product, cheapest_price, cheapest_url, cheapest_date)
+    # make the product object and return it
+    return_product = Product()
+    
+    return_product.set_date(cheapest_date)
+    return_product.set_price(cheapest_price)
+    return_product.set_url(cheapest_url)
+    return_product.set_name(cheapest_product)
+
+
+    return return_product

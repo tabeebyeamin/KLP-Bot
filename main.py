@@ -21,6 +21,7 @@ or language difference?
 '''
 
 from Locations import Locations
+from Product import Product
 from url_parser import url_parser as url
 from cheapestprice import cheapest_price as cheapest
 from sql import add_to_table as db
@@ -50,14 +51,20 @@ if (__name__ == "__main__"):
         # generate the kijiji url
         website = url(product, province_num, provinces, province_ids)
 
-        # webscrape the data from the url
-        (product_name, product_price, link, date) = cheapest(website, product)
+        # webscrape the product from the website
+        cheapest_product = cheapest(website, product)
+
+        # get the info
+        product_name = cheapest_product.get_name()
+        product_price = cheapest_product.get_price()
+        product_url = cheapest_product.get_url()
+        product_date = cheapest_product.get_date()
 
         # output the information
         print("The cheapest " + product + " in " + provinces[province_num] + (
             " is the \n" + product_name + "\n") +  (
-            "costing $" + str(product_price) + ", posted " + date + (
-                "\n" + "Here's the link: \n" + link)))
+            "costing $" + str(product_price) + ", posted " + product_date + (
+                "\n" + "Here's the product_url: \n" + product_url)))
         
         # prompt user if they want to save to a database
         save = input("Would you like to save this info to a database? Y/N\n")
@@ -69,7 +76,7 @@ if (__name__ == "__main__"):
                 "(If it doesn't exist it will create the db file for you)\n"))
             # save to database
             db(product_name, product_price,
-               provinces[province_num], link, date, table_name)
+               provinces[province_num], product_url, product_date, table_name)
 
         # prompt user to run the program again
         run_again = input("run again? Y/N \n")
