@@ -1,12 +1,12 @@
 # Kijiji Lowest Price Bot
 ## If you have any suggestions, please let me know!
-If you have any issues or suggestions, please let me know. I am always looking to improve.
+ I'm always looking to add more features and functionality and improve. If you have any issues or suggestions, please let me know.
 
 -------------------------------------------------------------------------------
 
 Give it the product you are looking for and your location and it will find the lowest price listing of that product on Kijiji. You can use it as a Slack Bot!
 Uses Python and BS4 and SQLite3 for database entry.
-This program works really well with products with easily identifiable model names or numbers, like computer hardware and peripherals, but it will also work on a plethora of other products as shown below. This is how it works right now. I'm always looking to add more features and functionality. If you have any issues or suggestions, please let me know.
+This program works really well with products with easily identifiable model names or numbers, like computer hardware and peripherals, but it will also work on a plethora of other products as shown below. This is how it works right now.
 
 -------------------------------------------------------------------------
 ## Use it as a Script
