@@ -1,9 +1,12 @@
 from urllib2 import urlopen as uReq
 from bs4 import BeautifulSoup as soup
 from Product import Product
+
 """
 Take the kijiji website url and find the cheapest priced item on that page.
 """
+
+
 def cheapest_price(my_url, givenproduct):
     '''(url, string) -> (string, float, string, string)
     This function takes a kijiji page url that has a list of products
@@ -20,39 +23,40 @@ def cheapest_price(my_url, givenproduct):
 
     # do the html parsing
     page_soup = soup(page_html, "html.parser")
-    # find all the items information
-    
+
+    # get all the regular advertisement containers
+
     containers = page_soup.findAll('div', {'class': 'search-item regular-ad'})
 
     # create empty dicts of prices, urls and dates attributres
     product_to_prices = {}
     product_to_urls = {}
     product_to_dates = {}
-    
-    # cycle through the containers
+
+    # loop through the containers
     for container in containers:
         # find the name of the model of the product
         product = container.a.text.strip()
         if givenproduct.lower() in product.lower():
-            
+
             # extract the price and store it
             # this used to be findAll
             price = container.find('div',
-                                        {"class":"price"}).text
+                                   {"class": "price"}).text
             # get the url of the product
             url = "https://www.kijiji.ca" + str(container.get('data-vip-url'))
-            
-            date = container.find('span',{"class": "date-posted"}).text
-            
+
+            date = container.find('span', {"class": "date-posted"}).text
+
             # see if the price is valid
             try:
-                # strip out the $ and ,            
+                # strip out the $ and ,
                 price = float(
                     price.replace('$', '').replace(',', '').replace(' ', ''))
                 # change from unicode to string
                 date = str(date)
                 product = str(product)
-                
+
                 # map product's price, url and date
                 product_to_prices[product] = price
                 product_to_urls[product] = url
@@ -75,11 +79,10 @@ def cheapest_price(my_url, givenproduct):
 
     # make the product object and return it
     return_product = Product()
-    
+
     return_product.set_date(cheapest_date)
     return_product.set_price(cheapest_price)
     return_product.set_url(cheapest_url)
     return_product.set_name(cheapest_product)
-
 
     return return_product

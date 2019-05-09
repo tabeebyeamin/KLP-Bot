@@ -22,7 +22,7 @@ or language difference?
 
 from Locations import Locations
 from Product import Product
-from url_parser import url_parser as url
+from Url import Url
 from cheapestprice import cheapest_price as cheapest
 from sql import add_to_table as db
 
@@ -32,7 +32,7 @@ if (__name__ == "__main__"):
     loopcond = True
     while (loopcond):
         # first arg is the product name
-        product = input("Enter a product: ")       
+        product = input("Enter a product: ")
 
         # get the locations and location ids
         l = Locations()
@@ -46,10 +46,18 @@ if (__name__ == "__main__"):
                 provinces[province_no] + "\n")
 
         # second arg is the province number
-        province_num = input("Enter a province number from:" + provinces_string)
+        province_num = input(
+            "Enter a province number from:" + provinces_string)
 
         # generate the kijiji url
-        website = url(product, province_num, provinces, province_ids)
+        websiteObject = Url()
+
+        websiteObject.set_product_name(product)
+        websiteObject.set_province_num(province_num)
+        websiteObject.set_provinces(provinces)
+        websiteObject.set_province_ids(province_ids)
+
+        website = websiteObject.generate()
 
         # webscrape the product from the website
         cheapest_product = cheapest(website, product)
@@ -62,10 +70,10 @@ if (__name__ == "__main__"):
 
         # output the information
         print("The cheapest " + product + " in " + provinces[province_num] + (
-            " is the \n" + product_name + "\n") +  (
+            " is the \n" + product_name + "\n") + (
             "costing $" + str(product_price) + ", posted " + product_date + (
                 "\n" + "Here's the product_url: \n" + product_url)))
-        
+
         # prompt user if they want to save to a database
         save = input("Would you like to save this info to a database? Y/N\n")
 
@@ -73,7 +81,7 @@ if (__name__ == "__main__"):
         if (save.lower().startswith("y")):
             table_name = input(
                 "Name of database you would like to store to?\n" + (
-                "(If it doesn't exist it will create the db file for you)\n"))
+                    "(If it doesn't exist it will create the db file for you)\n"))
             # save to database
             db(product_name, product_price,
                provinces[province_num], product_url, product_date, table_name)
