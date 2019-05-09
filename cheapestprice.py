@@ -1,8 +1,9 @@
 from urllib2 import urlopen as uReq
 from bs4 import BeautifulSoup as soup
 
-# this is a function that takes a Canadacomputers url and finds the cheapest
-# price on that url
+"""
+Take the kijiji website url and find the cheapest priced item on that page.
+"""
 def cheapest_price(my_url, givenproduct):
     '''(url, string) -> (string, float, string, string)
     This function takes a kijiji page url that has a list of products
